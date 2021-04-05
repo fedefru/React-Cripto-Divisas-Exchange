@@ -6,9 +6,6 @@ const CoinCurrency = props => {
    const { name, price, image } = props;
 
    return <>
-      {
-         console.log('image =>', image.default)
-      }
       <Col md={4} sm={6} lg={3} className="mt-4">
          <Card className="text-center">
             <Image className='img-cripto' src={image.default} roundedCircle />
