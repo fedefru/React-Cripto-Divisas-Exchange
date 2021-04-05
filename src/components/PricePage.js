@@ -20,7 +20,7 @@ const PricePage = () => {
                 "abbreviation": currencyDataApi.symbol,
                 "price": currencyDataApi.market_data.current_price[currencyPrice],
                 "currencyChange": currencyPrice.toUpperCase(),
-                "marketDay": currencyDataApi.market_data.price_change_24h,
+                "marketDay": currencyDataApi.market_data.price_change_percentage_24h,
                 "marketWeekly": currencyDataApi.market_data.price_change_percentage_7d,
                 "image": currencyDataApi.image.large
             }
