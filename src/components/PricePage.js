@@ -13,6 +13,7 @@ const PricePage = () => {
     const CURRENCIES_PRICE = ['ars', 'brl', 'clp', 'eur', 'usd']
 
     const getCurrency = async () => {
+        setCurrencies([]);
         const currencyComplete = await Promise.all(CURRENCIES.map(async (curr) => {
             const currencyDataApi = await getCriptoPriceById(curr);
             return {
@@ -76,9 +77,8 @@ const PricePage = () => {
                     </select>
                 </div>
             </div>
-
             {
-
+                
                 currencies.length > 0 ?
                     <>
                         {
