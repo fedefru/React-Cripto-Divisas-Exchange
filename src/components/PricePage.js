@@ -60,11 +60,9 @@ const PricePage = () => {
     }
 
     useEffect(async () => {
-        setInterval(() => {
-            getCurrency();
-            getCoin();
-        }, 20000);
 
+        getCurrency();
+        getCoin();
     }, [currencyPrice])
 
     return (
@@ -92,7 +90,7 @@ const PricePage = () => {
                         }
                     </>
                     :
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center mb-4 mt-4">
                         <Spinner animation="border" variant="secondary" />
                     </div>
             }
