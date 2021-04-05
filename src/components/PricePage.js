@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { getCriptoPriceById, getCoinPriceByCod } from '../utils/Api'
 import Section from './Section';
 import { Spinner } from 'react-bootstrap';
-import BRL from '../img/BRL.png';
-import CLP from '../img/CLP.png';
-import EUR from '../img/EUR.png';
-import USD from '../img/USD.png';
 const PricePage = () => {
 
     const [currencies, setCurrencies] = useState([]);
@@ -15,7 +11,6 @@ const PricePage = () => {
     const CURRENCIES = ['bitcoin', 'dogecoin', 'ripple', 'ethereum', 'cardano', 'binancecoin', 'wink', 'bittorrent-2']
     const COINS = ['EUR', 'CLP', 'USD', 'BRL']
     const CURRENCIES_PRICE = ['ars', 'brl', 'clp', 'eur', 'usd']
-    const IMAGES = [BRL, CLP, EUR, USD]
 
     const getCurrency = async () => {
         const currencyComplete = await Promise.all(CURRENCIES.map(async (curr) => {
@@ -58,11 +53,12 @@ const PricePage = () => {
         setCoins(aux);
 
     }
+    
 
-    useEffect(async () => {
-
+    useEffect(() => {
         getCurrency();
         getCoin();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currencyPrice])
 
     return (
