@@ -12,7 +12,7 @@ const PricePage = () => {
     const [coins, setCoins] = useState([]);
     const [currencyPrice, setCurrencyPrice] = useState('usd');
 
-    const CURRENCIES = ['bitcoin', 'dogecoin', 'ripple', 'ethereum', 'cardano', 'binancecoin', 'filecoin', 'polkadot']
+    const CURRENCIES = ['bitcoin', 'dogecoin', 'ripple', 'ethereum', 'cardano', 'binancecoin', 'wink', 'bittorrent-2']
     const COINS = ['EUR', 'CLP', 'USD', 'BRL']
     const CURRENCIES_PRICE = ['ars', 'brl', 'clp', 'eur', 'usd']
     const IMAGES = [BRL, CLP, EUR, USD]
@@ -30,14 +30,14 @@ const PricePage = () => {
                 "image": currencyDataApi.image.large
             }
         }));
-        
+
         const aux = [{
             titleText: 'CRIPTO',
             currencies: currencyComplete
         }]
 
         setCurrencies(aux);
-        
+
     }
 
     const getCoin = async () => {
@@ -49,20 +49,23 @@ const PricePage = () => {
                 "image": require(`../img/${coin}.png`)
             }
         }));
-        
+
         const aux = [{
             titleText: 'MONEDA',
             currencies: coinComplete
         }]
 
         setCoins(aux);
-        
+
     }
 
     useEffect(async () => {
-        getCurrency();
-        getCoin();
-    },[currencyPrice])
+        setInterval(() => {
+            getCurrency();
+            getCoin();
+        }, 20000);
+
+    }, [currencyPrice])
 
     return (
         <div>
@@ -81,7 +84,7 @@ const PricePage = () => {
             </div>
 
             {
-                
+
                 currencies.length > 0 ?
                     <>
                         {
@@ -90,11 +93,11 @@ const PricePage = () => {
                     </>
                     :
                     <div className="d-flex justify-content-center">
-                        <Spinner  animation="border" variant="secondary" />
-                    </div>  
+                        <Spinner animation="border" variant="secondary" />
+                    </div>
             }
             {
-                
+
                 coins.length > 0 ?
                     <>
                         {
@@ -103,8 +106,8 @@ const PricePage = () => {
                     </>
                     :
                     <div className="d-flex justify-content-center">
-                        <Spinner  animation="border" variant="secondary" />
-                    </div>  
+                        <Spinner animation="border" variant="secondary" />
+                    </div>
             }
         </div>
     )
